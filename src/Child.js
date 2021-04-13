@@ -6,7 +6,7 @@ const Child = ({ handleChange, num }) => {
     <button
       type="button"
       onClick= {() => handleChange(newState)}
-    >親コンポーネントを更新する{`${num}`}</button>
+    >親コンポーネントを更新する{`0${num}`}</button>
   );
 }
 export default Child;

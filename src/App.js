@@ -21,9 +21,6 @@ const App = () => {
     console.log(count);
   });
 
-  const getconsole = () => {
-    console.log(state);
-  }
   const addCount = () => {
     setCount(count + 1);
   }
