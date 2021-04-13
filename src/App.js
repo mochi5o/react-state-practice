@@ -4,12 +4,12 @@ import './App.css';
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const newObj = { key02: { hoge: 'hoge2', fuga: 'fuga2', id: 'key02', } }
-  const [state, setState] = useState({
-    key01: { hoge: 'hoge', fuga: 'fuga', id: 'key01', },
-    key02: { hoge: 'hoge', fuga: 'fuga', id: 'key02', },
-    key03: { hoge: 'hoge', fuga: 'fuga', id: 'key03', },
-  });
+  // const [state, setState] = useState({
+  //   key01: { hoge: 'hoge', fuga: 'fuga', id: 'key01', },
+  //   key02: { hoge: 'hoge', fuga: 'fuga', id: 'key02', },
+  //   key03: { hoge: 'hoge', fuga: 'fuga', id: 'key03', },
+  // });
+  const [state, setState] = useState([]);
   const handleChange = (e) => {
     setState(createNewState(state, getValue(e)))
   }
@@ -23,11 +23,22 @@ const App = () => {
     // Update the document title using the browser API
     document.title = `You clicked ${count} times`;
   });
+  const addValue = () => {
+    setCount(count + 1);
+    // setState(getObj)
+    setState(getObj)
+    console.log(count);
+    console.log(state);
+  }
+  // useEffect(() => {
+    
+  // })
+  const getObj = { [`key0${count}`]: { hoge: `hoge${count}`, fuga: `fuga${count}`, id: `key0${count}`, }};
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={() => addValue()}>
         Click me
       </button>
       {JSON.stringify(state)}

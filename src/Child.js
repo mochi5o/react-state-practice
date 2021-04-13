@@ -1,6 +1,6 @@
 import React from "react";
 
-const Child = ({ id, handleChange, num }) => {
+const Child = ({ handleChange, num }) => {
   const newHoge = { key02: { hoge: `hoge${num}`, fuga: `fuga${num}`, id: `key0${num}`, } }
   return (
     <button
