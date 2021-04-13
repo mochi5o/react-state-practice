@@ -13,12 +13,12 @@ const App = () => {
 
   const handleChange = (val) => {
     setState({...state, ...val})
-    // console.log(state);  //更新されてないやつがconsoleにでたので、
-    getconsole();  //関数の実行順の問題かと思ったけど、外で実行してもやっぱり更新されてないやつがでる
   }
-
+  // すべてはuseEffectにまかせる（この中でstateを更新する処理をかかないこと！）
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
+    // document.title = `You clicked ${count} times`;
+    console.log(state);
+    console.log(count);
   });
 
   const getconsole = () => {
@@ -26,8 +26,6 @@ const App = () => {
   }
   const addCount = () => {
     setCount(count + 1);
-    console.log(count);  //こっちは画面の表示と一緒
-    // と思ったらちがった。こっちも更新前のstateが表示される。
   }
 
   return (
