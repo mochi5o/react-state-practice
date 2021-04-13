@@ -5,41 +5,29 @@ import './App.css';
 const App = () => {
   const [count, setCount] = useState(0);
   const [state, setState] = useState({
+    key00: { hoge: 'hoge', fuga: 'fuga', id: 'key00', },
     key01: { hoge: 'hoge', fuga: 'fuga', id: 'key01', },
     key02: { hoge: 'hoge', fuga: 'fuga', id: 'key02', },
     key03: { hoge: 'hoge', fuga: 'fuga', id: 'key03', },
   });
 
   const handleChange = (val) => {
-    // setState(createNewState(state, getValue(e)));
     setState({...state, ...val})
-    console.log(count);
-    console.log(state);
+    // console.log(state);  //更新されてないやつがconsoleにでたので、
+    getconsole();  //関数の実行順の問題かと思ったけど、外で実行してもやっぱり更新されてないやつがでる
   }
-  // シンプルに直接書き換える処理にしたので削除予定
-  const createNewState = (state, newData) => {
-    return { ...state, ...newData };
-  };
-  // Childのbuttonのvalueを取得していたがイベントで取得しなくなったので削除予定
-  const getValue = (e) => {
-    return JSON.parse(e.target.value)
-  };
+
   useEffect(() => {
-    // Update the document title using the browser API
     document.title = `You clicked ${count} times`;
   });
-  const addValue = () => {
-    setCount(count + 1);
-    // setState(getObj)
-    setState(getObj)
-    console.log(count);
+
+  const getconsole = () => {
     console.log(state);
   }
   const addCount = () => {
     setCount(count + 1);
-    console.log(state)
+    console.log(count);  //こっちは画面の表示と一緒
   }
-  const getObj = { [`key0${count}`]: { hoge: `hoge${count}`, fuga: `fuga${count}`, id: `key0${count}`, }};
 
   return (
     <div>
@@ -47,10 +35,12 @@ const App = () => {
       <button onClick={() => addCount()}>
         Click me
       </button>
-      {/* {JSON.stringify(state)} */}
-      {
-        Object.values(state).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
-      }
+      <div>
+        {JSON.stringify(state)}
+      </div>
+        {
+          Object.values(state).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
+        }
     </div>
   );
 }
