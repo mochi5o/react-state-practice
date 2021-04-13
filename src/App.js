@@ -27,6 +27,7 @@ const App = () => {
   const addCount = () => {
     setCount(count + 1);
     console.log(count);  //こっちは画面の表示と一緒
+    // と思ったらちがった。こっちも更新前のstateが表示される。
   }
 
   return (
