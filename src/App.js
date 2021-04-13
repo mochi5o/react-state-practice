@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import Child from "./Child"
+import Child from "./Child"
 import './App.css';
 
 const App = () => {
@@ -13,20 +13,16 @@ const App = () => {
   const handleChange = (e) => {
     setState(createNewState(state, getValue(e)))
   }
-  const newHoge = { key02: { hoge: 'hoge2', fuga: 'fuga2', id: 'key02', } }
-
   const createNewState = (state, newData) => {
     return { ...state, ...newData };
   };
-
+  const getValue = (e) => {
+    return JSON.parse(e.target.value)
+  };
   useEffect(() => {
     // Update the document title using the browser API
     document.title = `You clicked ${count} times`;
   });
-
-  const getValue = (e) => {
-    return JSON.parse(e.target.value)
-  };
 
   return (
     <div>
@@ -34,11 +30,10 @@ const App = () => {
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button>
-      <button
-        value={JSON.stringify(newHoge)}
-        onClick={(e) => handleChange(e)}
-      >hoge</button>
       {JSON.stringify(state)}
+      {
+        Object.values(state).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
+      }
     </div>
   );
 }
