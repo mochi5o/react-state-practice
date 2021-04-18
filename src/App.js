@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Child from "./Child"
+import React, { useState, useEffect, useReducer } from 'react';
+import Child from "./Child";
+import Child2 from "./Child2";
 import './App.css';
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const [state, setState] = useState({
+  const [obj, setObj] = useState({
     key00: { hoge: 'hoge', fuga: 'fuga', id: 'key00', },
     key01: { hoge: 'hoge', fuga: 'fuga', id: 'key01', },
     key02: { hoge: 'hoge', fuga: 'fuga', id: 'key02', },
@@ -17,7 +18,7 @@ const App = () => {
   // すべてはuseEffectにまかせる（この中でstateを更新する処理をかかないこと！）
   useEffect(() => {
     // document.title = `You clicked ${count} times`;
-    console.log(state);
+    console.log(obj);
     console.log(count);
   });
 
@@ -34,9 +35,14 @@ const App = () => {
       <div>
         {JSON.stringify(state)}
       </div>
+      <div>
         {
           Object.values(state).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
         }
+      </div>
+      <div>
+        <Child2 />
+      </div>
     </div>
   );
 }
