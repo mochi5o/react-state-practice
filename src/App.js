@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import Child from "./Child";
-import Child2 from "./Child2";
+import Counter from "./Counter";
 import './App.css';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
   });
 
   const handleChange = (val) => {
-    setState({...state, ...val})
+    setObj({...obj, ...val})
   }
   // すべてはuseEffectにまかせる（この中でstateを更新する処理をかかないこと！）
   useEffect(() => {
@@ -33,15 +33,15 @@ const App = () => {
         Click me
       </button>
       <div>
-        {JSON.stringify(state)}
+        {JSON.stringify(obj)}
       </div>
       <div>
         {
-          Object.values(state).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
+          Object.values(obj).map((x, i) => <Child key={i} id={x.id} handleChange={handleChange} num={i} />)
         }
       </div>
       <div>
-        <Child2 />
+        <Counter />
       </div>
     </div>
   );
