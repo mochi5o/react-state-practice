@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import Child from "./Child";
 import Counter from "./Counter";
+import History from "./History";
 import './App.css';
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
       <div>
         <Counter />
       </div>
+      <History />
     </div>
   );
 }
