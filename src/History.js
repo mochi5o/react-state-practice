@@ -24,7 +24,6 @@ const Counter = () => {
 //作成したreducerFunc関数とhistoryStateをuseReducerに渡す
 //useReducerはhistoryStateとdispatchをペアで返すので、それぞれを分割代入
   const [history, dispatch] = useReducer(reducerFunc, initialValue)
-//カウント数とそれぞれのactionを実行する<Button/>を設置する
   return (
     <>
       <div>
