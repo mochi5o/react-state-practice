@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import useUndo from './UseHistory';
 import Child from "./Child";
 import Counter from "./Counter";

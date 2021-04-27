@@ -90,7 +90,7 @@ const useHistory = initialPresent => {
   ]);
 
   const clear = useCallback(() => dispatch({ type: 'CLEAR', initialPresent }), [
-    dispatch
+    initialPresent
   ]);
 
   // If needed we could also return past and future state
